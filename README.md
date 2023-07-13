@@ -1,4 +1,10 @@
 # BankApi
+###
+## Bank like API to study Elixir and Phoenix
+
+In this project the aim was to study web development in Phoenix, using Domain Driven Design patterns for the whole project.
+
+# Phoenix setup
 
 To start your Phoenix server:
 
