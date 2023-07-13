@@ -1,4 +1,4 @@
-defmodule BankApi.User do
+defmodule BankApi.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
