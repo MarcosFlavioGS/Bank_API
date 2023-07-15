@@ -5,9 +5,9 @@ defmodule BankApiWeb.UsersJSON do
     %{
       message: "User created !",
       data: data(user)
-
     }
   end
+
   defp data(%User{} = user) do
     %{
       id: user.id,

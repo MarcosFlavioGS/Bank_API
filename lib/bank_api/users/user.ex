@@ -25,8 +25,11 @@ defmodule BankApi.Users.User do
     |> add_password_hash()
   end
 
-  defp add_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+  defp add_password_hash(
+         %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
+       ) do
     change(changeset, Argon2.add_hash(password))
   end
+
   defp add_password_hash(changeset), do: changeset
 end
