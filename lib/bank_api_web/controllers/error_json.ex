@@ -1,4 +1,7 @@
 defmodule BankApiWeb.ErrorJSON do
+  @moduledoc """
+    Contains all error view functions for the user_controller
+  """
   # If you want to customize a particular status code,
   # you may add your own clauses, such as:
   #
@@ -13,6 +16,7 @@ defmodule BankApiWeb.ErrorJSON do
     %{errors: %{detail: Phoenix.Controller.status_message_from_template(template)}}
   end
 
+  # GET
   def error(%{status: :not_found}) do
     %{
       status: :not_found,
@@ -20,6 +24,7 @@ defmodule BankApiWeb.ErrorJSON do
     }
   end
 
+  # Create
   def error(%{changeset: changeset}) do
     %{
       errors: Ecto.Changeset.traverse_errors(changeset, &translate_errors/1)

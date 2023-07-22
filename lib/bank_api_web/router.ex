@@ -1,4 +1,7 @@
 defmodule BankApiWeb.Router do
+  @moduledoc """
+    Contains all routing logic
+  """
   use BankApiWeb, :router
 
   pipeline :api do

@@ -1,4 +1,7 @@
 defmodule BankApi.Users do
+  @moduledoc """
+    Module responsable for facades to functions
+  """
   alias BankApi.Users.Create
   alias BankApi.Users.Get
 

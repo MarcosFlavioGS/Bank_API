@@ -1,4 +1,9 @@
 defmodule BankApiWeb.FallbackController do
+  @moduledoc """
+    call functions for the fallback controller and
+    puts especific error views considering parameters received from captured
+    errors from the users_controller
+  """
   use BankApiWeb, :controller
 
   def call(conn, {:error, :not_found}) do
