@@ -2,7 +2,6 @@ defmodule BankApiWeb.UsersJSON do
   @moduledoc """
     This module contains all view functions for CREATE SHOW UPDATE DELETE
   """
-  alias BankApi.Users.User
 
   @doc """
     create/1
@@ -12,7 +11,7 @@ defmodule BankApiWeb.UsersJSON do
   def create(%{user: user}) do
     %{
       message: "User created !",
-      data: data(user)
+      data: user
     }
   end
 
@@ -22,16 +21,7 @@ defmodule BankApiWeb.UsersJSON do
   """
   def get(%{user: user}) do
     %{
-      data: data(user)
-    }
-  end
-
-  defp data(%User{} = user) do
-    %{
-      id: user.id,
-      cep: user.cep,
-      email: user.email,
-      name: user.name
+      data: user
     }
   end
 end
