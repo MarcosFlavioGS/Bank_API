@@ -5,7 +5,8 @@ defmodule BankApi.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @required_params [:name, :password, :email, :cep]
+  @required_params_create [:name, :password, :email, :cep]
+  @required_params_update [:name, :email, :cep]
 
   @derive {Jason.Encoder, only: [:name, :email, :cep]}
   schema "users" do
@@ -19,14 +20,30 @@ defmodule BankApi.Users.User do
   end
 
   @doc """
-    changeset/2
-    Receives an User struct and parameter to validate.
-    Performs param cast, params validation, adds password hash and returns a changeset
+    changeset/1
+    Receives an parameters to validate.
+    Performs param cast, params validation, adds password hash and returns a new user changeset.
   """
-  def changeset(user \\ %__MODULE__{}, params) do
+  def changeset(params) do
+    %__MODULE__{}
+    |> cast(params, @required_params_create)
+    |> validate_required(@required_params_create)
+    |> validate_length(:name, min: 3)
+    |> validate_length(:password, min: 6)
+    |> validate_length(:cep, min: 8)
+    |> validate_format(:email, ~r/@/)
+    |> add_password_hash()
+  end
+
+  @doc """
+    changeset/2
+    Receives an User struct and parameters to validate and update.
+    Performs param cast, params validation, adds password hash and returns a changeset with updated user.
+  """
+  def changeset(user, params) do
     user
-    |> cast(params, @required_params)
-    |> validate_required(@required_params)
+    |> cast(params, @required_params_create)
+    |> validate_required(@required_params_update)
     |> validate_length(:name, min: 3)
     |> validate_length(:password, min: 6)
     |> validate_length(:cep, min: 8)
