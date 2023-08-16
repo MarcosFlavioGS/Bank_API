@@ -31,6 +31,10 @@ defmodule BankApiWeb.UsersController do
     end
   end
 
+  @doc"""
+    update/2
+    Receives a connection, user id and parameters to update as params.
+  """
   def update(conn, params) do
     with {:ok, %User{} = user} <- Users.update(params) do
       conn

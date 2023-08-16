@@ -5,7 +5,7 @@ defmodule BankApiWeb.UsersJSON do
 
   @doc """
     create/1
-    Receives an user struct and returns the map containing a message and the user
+    Receives an user struct and returns the map containing a message, the user and the user id.
     data
   """
   def create(%{user: user}) do
