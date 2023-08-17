@@ -21,7 +21,7 @@ defmodule BankApi.Users.User do
 
   @doc """
     changeset/1
-    Receives an parameters to validate.
+    Receives a parameters to validate.
     Performs param cast, params validation, adds password hash and returns a new user changeset.
   """
   def changeset(params) do

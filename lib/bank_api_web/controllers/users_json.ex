@@ -17,6 +17,17 @@ defmodule BankApiWeb.UsersJSON do
   end
 
   @doc """
+    delete/1
+    Receives an user struct and returns the deleted user.
+  """
+  def delete(%{user: user}) do
+    %{
+      message: "User deleted !",
+      data: user
+    }
+  end
+
+  @doc """
     get/1
     Receives an User and puts a map with the user data
   """

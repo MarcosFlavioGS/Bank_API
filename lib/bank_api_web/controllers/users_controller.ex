@@ -20,6 +20,18 @@ defmodule BankApiWeb.UsersController do
   end
 
   @doc """
+    delete/2
+    Receives a connection and an user Id.
+  """
+  def delete(conn, %{"id" => id}) do
+    with {:ok, %User{} = user} <- Users.delete(id) do
+      conn
+      |> put_status(:ok)
+      |> render(:delete, user: user)
+    end
+  end
+
+  @doc """
     show/2
     Receives the connection and an user id
   """
